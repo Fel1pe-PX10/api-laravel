@@ -6,6 +6,9 @@ use App\Models\Invoce;
 
 use App\Http\Controllers\Controller;
 
+use App\Http\Resources\V1\InvoiceResource;
+use App\Http\Resources\V1\InvoiceCollection;
+
 use App\Http\Requests\StoreInvoceRequest;
 use App\Http\Requests\UpdateInvoceRequest;
 
@@ -16,7 +19,7 @@ class InvoceController extends Controller
      */
     public function index()
     {
-        //
+        return new InvoiceCollection(Invoce::paginate());
     }
 
     /**
@@ -40,7 +43,7 @@ class InvoceController extends Controller
      */
     public function show(Invoce $invoce)
     {
-        //
+        return new InvoiceResource($invoce);
     }
 
     /**
