@@ -31,8 +31,8 @@ Route::get('setup', function () {
             $user = User::where('email', $credentials['email'])->first();
 
             $adminToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-            $updateToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
-            $basicToken = $user->createToken('admin-token', ['create', 'update', 'delete']);
+            $updateToken = $user->createToken('admin-token', ['create', 'update']);
+            $basicToken = $user->createToken('admin-token', ['read']);
             
             return [
                 'admin' => $adminToken->plainTextToken,
